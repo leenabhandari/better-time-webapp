@@ -1,7 +1,14 @@
 <?php
-//Step1
- $db = mysqli_connect('localhost','root','','media')
- or die('Error connecting to MySQL server.');
+    ob_start();
+    session_start();
+
+    // Check to see if actually logged in. If not, redirect to login page
+    if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
+        header("Location: login.php");
+    }	
+ $db = mysqli_connect('localhost','Atharva','qwertyui','media')
+ or die('Error123 connecting to MySQL server.');
+ 
 ?>
 
 <html>
@@ -19,12 +26,17 @@
 					<div class="content">
 						<h1>Better Time</h1>
 						<h2>Loading...</h2>
-						<a href="#" class="button big alt"><span>Let's Go</span></a>
+						<a href="#" class="button big alt"><span>Login</span></a>
 					</div>
 					<a href="#" class="button hidden"><span>Let's Go</span></a>
 				</div>
 			</header>
 <div>
+
+<h1>Logged In!</h1>
+<form method="post" action="logout.php">
+    <input type="submit" value="Logout">
+</form>
 
   <div style="text-align:center"  class="form1">
     <h1><br><br>Post a news</h1>
@@ -54,6 +66,8 @@ $result = mysqli_query($db, $query);
 $row = mysqli_fetch_array($result);
 
 while ($row = mysqli_fetch_array($result)) {
+$hundred=100;
+$zero = 0;
 $varcom=1000-$row['postID'];
 $varcom1=2000-$row['postID'];
   $varid=$row['postID'];
@@ -73,6 +87,14 @@ $vardel=3000-$row['postID'];
   <input type="submit" name="<?php echo $vardel; ?>" value="Disagree">
 </div>
 </form>
+<?php
+	if($row['agree'] == $zero and $row['disagree'] == $zero){
+		echo '<h3>Genuinity:0';
+	}
+	else{
+		echo '<h3>Genuinity:'.$row['agree']/($row['disagree'] + $row['agree']) * $hundred.'</h3>';
+	}	
+?>
 </div>
 <form  method="post">
     <input type="text" placeholder="Comment" name="<?php echo $varcom1 ?>" >
@@ -91,12 +113,10 @@ echo '<hr>';
  if(isset($_POST[$varid])){
    $qry1="update post set agree=agree+1 where postID='$varid';";
    mysqli_query($db,$qry1);
-   header("Refresh:0");
  }
  else if(isset($_POST[$vardel])){
    $qry2="update post set disagree=disagree+1 where postID=3000-'$vardel';";
    mysqli_query($db,$qry2);
-   header("Refresh:0");
  }
  else if(isset($_POST[$varcom]))
  {
@@ -104,7 +124,7 @@ echo '<hr>';
    $varcomid=2000-$varcom1;
    $qrycom="insert into comment values('$varcomid','$varcomment');";
    mysqli_query($db,$qrycom);
-   header("Refresh:0");
+
  }
 
 
