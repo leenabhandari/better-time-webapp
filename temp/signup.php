@@ -1,5 +1,5 @@
 <?php
- $db = mysqli_connect('localhost','Atharva','qwertyui','users')
+ $db = mysqli_connect('localhost','root','','users')
  or die('Error123 connecting to MySQL server.');
  
     // Error message

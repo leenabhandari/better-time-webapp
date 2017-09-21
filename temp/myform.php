@@ -3,7 +3,7 @@
 
 
 <?php
-$db = mysqli_connect('localhost','Atharva','qwertyui','media')
+$db = mysqli_connect('localhost','root','','social')
  or die('Error connecting to MySQL server.');
 if($_POST['formSubmit'] == "Submit")
 

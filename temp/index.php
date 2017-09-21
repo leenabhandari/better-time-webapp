@@ -6,7 +6,7 @@
     if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
         header("Location: login.php");
     }	
- $db = mysqli_connect('localhost','Atharva','qwertyui','media')
+ $db = mysqli_connect('localhost','root','','social')
  or die('Error123 connecting to MySQL server.');
  
 ?>
@@ -21,16 +21,7 @@
 	<body>
 
 		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<div class="content">
-						<h1>Better Time</h1>
-						<h2>Loading...</h2>
-						<a href="#" class="button big alt"><span>Login</span></a>
-					</div>
-					<a href="#" class="button hidden"><span>Let's Go</span></a>
-				</div>
-			</header>
+			
 <div>
 
 <h1>Logged In!</h1>
@@ -113,10 +104,12 @@ echo '<hr>';
  if(isset($_POST[$varid])){
    $qry1="update post set agree=agree+1 where postID='$varid';";
    mysqli_query($db,$qry1);
+   header("Refresh:0");
  }
  else if(isset($_POST[$vardel])){
    $qry2="update post set disagree=disagree+1 where postID=3000-'$vardel';";
    mysqli_query($db,$qry2);
+   header("Refresh:0");
  }
  else if(isset($_POST[$varcom]))
  {
@@ -124,6 +117,7 @@ echo '<hr>';
    $varcomid=2000-$varcom1;
    $qrycom="insert into comment values('$varcomid','$varcomment');";
    mysqli_query($db,$qrycom);
+   header("Refresh:0");
 
  }
 
@@ -140,7 +134,7 @@ mysqli_close($db);
 				<div class="inner">
 					<div class="content">
 						<h3>About 'Better time' project</h3>
-						<p>There is a saying that goes, “Whoever controls the media, controls the mind.” When virality outweighs truth, you have fake news. We need tools for fact-checking and helping people decipher fact from fiction. We need to ensure the “freedom of the press” holds for those who are attempting to bring the truth to the public but end up getting bullied by people who abuse power. The greatest tool is Democracy. Therefore, this is a place to let everyone know your opinion. Just a simple UI to post a news with no log-in or sign-up. Just Click 'Agree' if you think it is true and 'Disagree' if you dont. Also, please feel free to leave a comment.</p>
+						<p>This project aims at fighting one of the most grave social ills namely 'Food Adulteration'. Food adulteration has become rampant in India. Food products might be contaminated just so that the producers will earn a little more. In a recent report, the Public Health Foundation of India attributed 80 percent of all premature deaths to contaminated food and water. To tackle with this, this project aims at making others aware of the contamination on a large scale. This knowledge on this site will help people to choose their grocery items wisely and adulterated foods will automatically have a reduced market share. Let's make India a better place to live in.</p>
 					</div>
 
 				</div>

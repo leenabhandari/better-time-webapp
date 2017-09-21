@@ -1,5 +1,5 @@
 <?php
- $db = mysqli_connect('localhost','Atharva','qwertyui','users')
+ $db = mysqli_connect('localhost','root','','users')
  or die('Error123 connecting to MySQL server.');
  
  // Start the session
@@ -18,6 +18,9 @@
         
     // Checks to see if the username and password have been entered.
     // If so and are equal to the username and password defined above, log them in.
+	
+	
+	
     if (isset($_POST['username']) && isset($_POST['password']) && $_POST['username']!='' && $_POST['password'] != '') {
     	$uname  = $_POST['username'];
     	$passwd = $_POST['password'];
@@ -46,15 +49,35 @@
   <title>Login Form</title>
   
   
-  
-      <link rel="stylesheet" href="css/style.css">
 
+	  
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
   
 </head>
 
 <body>
+
+<header id="header">
+				<div class="inner">
+					<div class="content">
+						<h1>Better Time</h1>
+						<h2>This project aims at tackling with 'Food Adulteration'. So go ahead and make India a better place to live in.. </h2>
+						<form class="login-form" method="post" action="login.php">
+      <input type="text" name="username" id="username" placeholder="Username"/>
+      <input type="password" name="password" id="password" placeholder="Password"/>
+      <input type="submit" value="Login">
+      <p class="message">Not registered? <a href="./signup.php">Create an account</a></p>
+    </form>
+						<a href="#" class="button big alt"><span>Sign up</span></a>
+					</div>
+					<a href="#" class="button hidden"><span>Let's Go</span></a>
+				</div>
+			</header>
   <div class="login-page">
   <?php echo $error; ?>
+  
+  
   <div class="form">
     <form class="login-form" method="post" action="login.php">
       <input type="text" name="username" id="username" placeholder="Username"/>
@@ -64,6 +87,9 @@
     </form>
   </div>
 </div>
-
+<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 </body>
 </html>
