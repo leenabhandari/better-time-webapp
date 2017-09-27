@@ -15,3 +15,5 @@ To View all Complaints:
 1.Create an Account as Stated Above.
 2.Once You have Logged in you can View All Complaints.
 3.If You Agree with it, Click On Agree Button, Otherwise Click on Disagree.
+
+![Login Screenshot](https://github.com/leenabhandari/better-time-webapp/blob/master/login.png)
