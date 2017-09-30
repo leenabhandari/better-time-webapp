@@ -21,4 +21,4 @@ To View all Complaints:
 
 3.If You Agree with it, Click On Agree Button, Otherwise Click on Disagree.
 
-![Login Screenshot](https://github.com/leenabhandari/better-time-webapp/blob/master/login.png)
+![Login Screenshot](https://github.com/leenabhandari/better-time-webapp/blob/master/screenshot.png)
